@@ -1,9 +1,9 @@
 generator: admingenerator.generator.doctrine
 params:
-    model: Mems\AdminBundle\Entity\mem
+    model: Mems\MemsBundle\Entity\Comment
     namespace_prefix: Mems
     concurrency_lock: ~
-    bundle_name: AdminBundle
+    bundle_name: MemsBundle
     pk_requirement: ~
     fields: ~
     object_actions:
@@ -13,7 +13,7 @@ params:
 builders:
     list:
         params:
-            title: List for AdminBundle
+            title: List for MemsBundle
             display: ~
             actions:
                 new: ~
@@ -29,21 +29,21 @@ builders:
             display: ~
     new:
         params:
-            title: New object for AdminBundle
+            title: New object for MemsBundle
             display: ~
             actions:
                 save: ~
                 list: ~
     edit:
         params:
-            title: "You're editing the object \"%object%\"|{ %object%: mem.title }|"
+            title: "You're editing the object \"%object%\"|{ %object%: Comment.title }|"
             display: ~
             actions:
                 save: ~
                 list: ~
     show:
         params:
-            title: "You're viewing the object \"%object%\"|{ %object%: mem.title }|"
+            title: "You're viewing the object \"%object%\"|{ %object%: Comment.title }|"
             display: ~
             actions:
                 list: ~
