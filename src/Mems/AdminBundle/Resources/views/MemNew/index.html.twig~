@@ -1,0 +1,1 @@
+{% extends_admingenerated "MemsAdminBundle:MemNew:index.html.twig" %}

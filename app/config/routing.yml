@@ -1,7 +1,7 @@
-MemsMemsBundle_admin_mems_mems_bundle_comment:
-    resource: "@MemsMemsBundle/Controller/Comment/"
+MemsAdminBundle_admin_mems_admin_bundle_mem:
+    resource: "@MemsAdminBundle/Controller/Mem/"
     type:     admingenerator
-    prefix:   /admin/comment
+    prefix:   /admin/mem
 
 mems_layout:
     resource: "@MemsLayoutBundle/Resources/config/routing.yml"
