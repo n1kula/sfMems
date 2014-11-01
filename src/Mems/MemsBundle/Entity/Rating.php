@@ -99,4 +99,50 @@ class Rating
     {
         return $this->rating;
     }
+
+    /**
+     * Set mem
+     *
+     * @param string $mem
+     * @return Rating
+     */
+    public function setMem($mem)
+    {
+        $this->mem = $mem;
+
+        return $this;
+    }
+
+    /**
+     * Get mem
+     *
+     * @return string 
+     */
+    public function getMem()
+    {
+        return $this->mem;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Mems\UserBundle\Entity\User $createdBy
+     * @return Rating
+     */
+    public function setCreatedBy(\Mems\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Mems\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
 }

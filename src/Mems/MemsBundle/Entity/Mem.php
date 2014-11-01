@@ -176,4 +176,101 @@ class Mem
     {
         return $this->isAccepted;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Mems\UserBundle\Entity\User $createdBy
+     * @return Mem
+     */
+    public function setCreatedBy(\Mems\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Mems\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Mems\MemsBundle\Entity\Comment $comments
+     * @return Mem
+     */
+    public function addComment(\Mems\MemsBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Mems\MemsBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Mems\MemsBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * Add ratings
+     *
+     * @param \Mems\MemsBundle\Entity\Rating $ratings
+     * @return Mem
+     */
+    public function addRating(\Mems\MemsBundle\Entity\Rating $ratings)
+    {
+        $this->ratings[] = $ratings;
+
+        return $this;
+    }
+
+    /**
+     * Remove ratings
+     *
+     * @param \Mems\MemsBundle\Entity\Rating $ratings
+     */
+    public function removeRating(\Mems\MemsBundle\Entity\Rating $ratings)
+    {
+        $this->ratings->removeElement($ratings);
+    }
+
+    /**
+     * Get ratings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRatings()
+    {
+        return $this->ratings;
+    }
 }

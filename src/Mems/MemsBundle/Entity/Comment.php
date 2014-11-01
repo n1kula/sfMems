@@ -169,4 +169,50 @@ class Comment
     {
         return $this->userAgent;
     }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Mems\UserBundle\Entity\User $createdBy
+     * @return Comment
+     */
+    public function setCreatedBy(\Mems\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return \Mems\UserBundle\Entity\User 
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set mem
+     *
+     * @param \Mems\MemsBundle\Entity\Mem $mem
+     * @return Comment
+     */
+    public function setMem(\Mems\MemsBundle\Entity\Mem $mem = null)
+    {
+        $this->mem = $mem;
+
+        return $this;
+    }
+
+    /**
+     * Get mem
+     *
+     * @return \Mems\MemsBundle\Entity\Mem 
+     */
+    public function getMem()
+    {
+        return $this->mem;
+    }
 }
