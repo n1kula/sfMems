@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Mems\UserBundle\MemsUserBundle(),
             new Mems\MemsBundle\MemsMemsBundle(),
             new Mems\LayoutBundle\MemsLayoutBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
