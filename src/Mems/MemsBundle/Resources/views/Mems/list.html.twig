@@ -5,6 +5,7 @@
 {% block body %}
 
     <h1>Strona główna</h1>
+    <a href="{{ path('mems_add') }}" class="btn btn-info">Dodaj mema</a>
     
     {% for mem in mems %}
         <div>

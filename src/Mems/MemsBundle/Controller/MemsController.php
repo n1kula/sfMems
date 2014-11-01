@@ -16,9 +16,10 @@ class MemsController extends Controller
     {
         $mems = $this->getDoctrine()
                 ->getRepository('MemsMemsBundle:Mem')
-                ->findBy([
-                    'isAccepted' => true,
-                ]);
+                 ->findBy(
+                ['isAccepted' => true],
+                ['createdAt' => 'desc']
+            );
         return $this->render('MemsMemsBundle:Mems:list.html.twig', array(
             'mems' =>$mems,
         ));
@@ -66,6 +67,36 @@ class MemsController extends Controller
             'mem' => $mem,
             'form' => $form->createView()
         ));    
+    }
+    public function addAction(Request $request)
+    {
+        $user = $this->getUser();
+        
+        if (!$user || !$user->hasRole('ROLE_USER')) {
+            throw $this->createAccessDeniedException("Nie posiadasz odpowiednich uprawnień!");
+        }
+        
+        $mem = new Mem();
+        $mem->setCreatedBy($user);
+        
+        $form = $this->createForm(new AddMemType(), $mem);
+        
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            
+            // save data
+            $this->persist($mem);
+            
+            $this->addFlash('notice', "Mem został pomyślnie dodane i oczekuje w poczekalni.");
+            
+            return $this->redirect($this->generateUrl('mems_list'));
+        }
+        
+        
+        return $this->render('MemsMemsBundle:Mems:add.html.twig', array(
+            'form'  => $form->createView()
+        ));
     }
 
 }
