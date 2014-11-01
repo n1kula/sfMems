@@ -3,6 +3,9 @@
 namespace Mems\MemsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Mems\MemsBundle\Controller\MemsController\MemsBundle\Form\CommentType;
+use Mems\MemsBundle\Form\AddCommentType;
+use Mems\MemsBundle\Entity\Comment;
 
 class MemsController extends Controller
 {
@@ -33,6 +36,7 @@ class MemsController extends Controller
             
         return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
             'mem' => $mem,
+            'form' => $form->createView()
         ));    
     }
 

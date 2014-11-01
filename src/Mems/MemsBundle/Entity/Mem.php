@@ -10,6 +10,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Mem
 {
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     /**
      * @var integer
      *

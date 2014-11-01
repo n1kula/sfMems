@@ -9,3 +9,11 @@ mems_list:
 mems_show:
     path:     /{slug}
     defaults: { _controller: MemsMemsBundle:Mems:show }
+
+new:
+    path:     /new
+    defaults: { _controller: MemsMemsBundle:Comment:new }
+
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: MemsMemsBundle:Comment:edit }
