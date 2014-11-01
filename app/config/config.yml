@@ -105,3 +105,10 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+            
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name: page
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig

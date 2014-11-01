@@ -12,7 +12,7 @@ use Mems\CoreBundle\Controller\Controller;
 
 class MemsController extends Controller
 {
-    public function listAction()
+    public function listAction($page)
     {
         $mems = $this->getDoctrine()
                 ->getRepository('MemsMemsBundle:Mem')
@@ -20,8 +20,14 @@ class MemsController extends Controller
                 ['isAccepted' => true],
                 ['createdAt' => 'desc']
             );
+         $paginator  = $this->get('knp_paginator');
+         $pages = $paginator->paginate(
+                $mems,
+                $page,
+                5
+        );
         return $this->render('MemsMemsBundle:Mems:list.html.twig', array(
-            'mems' =>$mems,
+            'pages' =>$pages,
         ));
         
     }

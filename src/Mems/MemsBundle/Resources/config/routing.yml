@@ -7,8 +7,9 @@ mems_add:
     defaults: { _controller: MemsMemsBundle:Mems:add }
 
 mems_list:
-    path:     /
-    defaults: { _controller: MemsMemsBundle:Mems:list }
+    path:     /{page}
+    defaults: { _controller: MemsMemsBundle:Mems:list, page: 1 }
+    requirements: { page: \d+ }
 
 mems_new:
     path:     /new
