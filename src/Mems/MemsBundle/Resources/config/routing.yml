@@ -1,3 +1,11 @@
 mems_mems_homepage:
     path:     /hello/{name}
     defaults: { _controller: MemsMemsBundle:Default:index }
+
+mems_list:
+    path:     /
+    defaults: { _controller: MemsMemsBundle:Mems:list }
+
+mems_show:
+    path:     /{slug}
+    defaults: { _controller: MemsMemsBundle:Mems:show }

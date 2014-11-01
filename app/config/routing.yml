@@ -7,9 +7,8 @@ mems_layout:
     resource: "@MemsLayoutBundle/Resources/config/routing.yml"
     prefix:   /
 
-mems_mems:
-    resource: "@MemsMemsBundle/Resources/config/routing.yml"
-    prefix:   /
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 mems_user:
     resource: "@MemsUserBundle/Resources/config/routing.yml"
@@ -18,4 +17,7 @@ mems_user:
 mems_admin:
     resource: "@MemsAdminBundle/Resources/config/routing.yml"
     prefix:   /
-
+    
+mems_mems:
+    resource: "@MemsMemsBundle/Resources/config/routing.yml"
+    prefix:   /

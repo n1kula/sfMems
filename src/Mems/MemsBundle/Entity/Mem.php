@@ -67,6 +67,19 @@ class Mem
      * @ORM\Column(name="is_accepted", type="boolean")
      */
     private $isAccepted;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime('now');
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    
+    
     /**
      * Get id
      *
@@ -176,14 +189,7 @@ class Mem
     {
         return $this->isAccepted;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+
 
     /**
      * Set createdBy
