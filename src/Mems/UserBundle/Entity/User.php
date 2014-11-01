@@ -27,19 +27,19 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Mems\MemsBundle\Entity\Mem", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    private $mems;
+    protected $mems;
 
     /**
      * @ORM\OneToMany(targetEntity="Mems\MemsBundle\Entity\Comment", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    private $comments;
+    protected $comments;
 
     /**
      * @ORM\OneToMany(targetEntity="Mems\MemsBundle\Entity\Rating", mappedBy="createdBy")
      * @var ArrayCollection
      */
-    private $ratings;
+    protected $ratings;
 
 
     /**
@@ -57,6 +57,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->roles = ['ROLE_USER'];
         $this->mems = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();

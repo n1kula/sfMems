@@ -1,9 +1,9 @@
 <?php
-namespace Kwejk\MemsBundle\DataFixtures\ORM;
+namespace Mems\MemsBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Kwejk\MemsBundle\Entity\Mem;
+use Mems\MemsBundle\Entity\Mem;
 /**
  * LoadMemsData
  */
