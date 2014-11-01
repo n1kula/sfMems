@@ -1,0 +1,3 @@
+mems_layout_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: MemsLayoutBundle:Default:index }
