@@ -1,3 +1,8 @@
+MemsAdminBundle_admin_mems_admin_bundle_comment:
+    resource: "@MemsAdminBundle/Controller/Comment/"
+    type:     admingenerator
+    prefix:   /admin/comment
+
 MemsAdminBundle_admin_mems_admin_bundle_mem:
     resource: "@MemsAdminBundle/Controller/Mem/"
     type:     admingenerator

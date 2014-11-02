@@ -1,0 +1,1 @@
+{% extends_admingenerated "MemsAdminBundle:CommentEdit:index.html.twig" %}
