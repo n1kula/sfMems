@@ -40,8 +40,8 @@ class User extends BaseUser
      * @var ArrayCollection
      */
     protected $ratings;
-
-
+    
+    
     /**
      * Get id
      *
@@ -55,14 +55,42 @@ class User extends BaseUser
      * Constructor
      */
     public function __construct()
-    {
+    {   
+        $date = null;
+            
         parent::__construct();
         $this->roles = ['ROLE_USER'];
         $this->mems = new \Doctrine\Common\Collections\ArrayCollection();
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ratings = new \Doctrine\Common\Collections\ArrayCollection();
+        
     }
-
+ 
+    /**
+     * @param \DateTime $date
+     *
+     * @return expiresAt
+     */
+   public function ExpiresAt(\DateTime $date = null)
+   {
+      if($date instanceof DateTime){
+            $this->expiresAt = $date;
+      } 
+    }
+    
+       /**
+     * @param \DateTime $date
+     *
+     * @return expiresAt
+     */
+   public function credentialsExpireAt(\DateTime $date = null)
+   {
+      if($date instanceof DateTime){
+            $this->expiresAt = $date;
+      } 
+    }
+  
+    
     /**
      * Add mems
      *
