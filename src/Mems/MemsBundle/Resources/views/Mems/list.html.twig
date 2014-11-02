@@ -5,14 +5,19 @@
 {% block body %}
 
     <h1>Strona główna</h1>
-    <a href="{{ path('mems_add') }}" class="btn btn-info">Dodaj mema</a>
+    <a href="{{ path('mems_add') }}" class="pull-right btn btn-info">Dodaj mema</a>
     
     {% for mem in pages %}
-        <div>
-            <a href="{{ path('mems_show', {'slug': mem.slug}) }}">
+        <div class="media">
+            <a href="{{ path('mems_show', {'slug': mem.slug}) }}" class="media-left pull-left">
                 <p>{{ mem.title }}</p>
-                <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
+                <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}" class="thumbnail" style="width: 200px">
             </a>
+            <div class="media-body">
+                <h4 class="media-heading">{{ mem.title }}</h4>
+                <p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
+                
+            </div>
         </div>
     {% else %}
         <p>Brak memów</p>    

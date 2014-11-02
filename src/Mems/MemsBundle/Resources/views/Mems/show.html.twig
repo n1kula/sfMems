@@ -14,7 +14,7 @@
 
 <div>
         
-    <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}">
+    <img  src="{{ asset('uploads/mems/' ~ mem.imageName) }}" alt="{{ mem.title }}" style="width: 100%">
     
     <p>Dodany przez {{ mem.createdBy }}, dnia {{ mem.createdAt|date('Y-m-d H:i:s') }}</p>
     
@@ -36,6 +36,10 @@
         
             <h3>Dodaj jako pierwszy!</h3>
             {{ form(form) }}
+            
+            {% else %}
+                
+                <p><a href="{{ path('fos_user_security_login') }}"> Zaloguj się </a>, w celu dodania komentarza.</p>
             
         {% endif %}
     
