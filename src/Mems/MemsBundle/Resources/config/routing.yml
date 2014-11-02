@@ -10,6 +10,11 @@ mems_list:
     path:     /{page}
     defaults: { _controller: MemsMemsBundle:Mems:list, page: 1 }
     requirements: { page: \d+ }
+    
+mems_unaccepted_list:
+    path:     /poczekalnia/{page}
+    defaults: { _controller: MemsMemsBundle:Mems:listUnaccepted, page: 1 }
+    requirements: { page: \d+ }
 
 mems_new:
     path:     /new

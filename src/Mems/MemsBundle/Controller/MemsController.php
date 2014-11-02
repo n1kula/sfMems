@@ -34,6 +34,26 @@ class MemsController extends Controller
         ));
         
     }
+    
+    public function listUnacceptedAction($page)
+    {
+        $mems = $this->getDoctrine()
+                ->getRepository('MemsMemsBundle:Mem')
+                 ->findBy(
+                ['isAccepted' => false],
+                ['createdAt' => 'desc']
+            );
+         $paginator  = $this->get('knp_paginator');
+         $pages = $paginator->paginate(
+                $mems,
+                $page,
+                5
+        );
+        return $this->render('MemsMemsBundle:Mems:listUnaccepted.html.twig', array(
+            'pages' =>$pages,
+        ));
+        
+    }
 
     public function showAction($slug)
     {

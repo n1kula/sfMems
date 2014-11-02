@@ -16,7 +16,7 @@ class Builder extends ContainerAware
             'route' => 'mems_list'
         ]);
         $menu->addChild('Poczekalnia', [
-            'uri' => '#'
+            'route' => 'mems_unaccepted_list'
         ]);
         $menu->addChild('Top', [
             'uri' => '#'
