@@ -51,8 +51,21 @@
     {% endif %}
     
     
-    <h3>Średnia ocena </h3>
-    <p> tu bedzie srednia</p>
+    <h3>Lsita ocen: </h3>
+  
+    {% for rating in mem.ratings %}
+
+        <p id="rating-{{ rating.id }}">{{ rating.rating }}
+            <small>Dodana przez {{ rating.createdBy }} dnia {{ rating.createdAt|date('Y-m-d H:i:s') }}</small>
+        </p>
+        
+    
+    {% else %}
+        
+        <p>Nie znaleziono ocen.</p>
+        
+    {% endfor %}
+    
     {# if app.user #}
         {% if is_granted('ROLE_USER') %}
         

@@ -63,6 +63,9 @@ class Rating
     {
         return $this->id;
     }
+    
+ 
+    
     /**
      * Set createdAt
      *
@@ -74,6 +77,8 @@ class Rating
         $this->createdAt = $createdAt;
         return $this;
     }
+    
+    
     /**
      * Get createdAt
      *
@@ -83,6 +88,8 @@ class Rating
     {
         return $this->createdAt;
     }
+    
+    
     /**
      * Set rating
      *
