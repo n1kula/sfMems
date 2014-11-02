@@ -34,20 +34,24 @@ class Rating
      */
     private $createdBy;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mem", type="string", length=255)
+  /**
+     * @ORM\ManyToOne(targetEntity="Mem", inversedBy="comments")
+     * @ORM\JoinColumn(name="mem_id", referencedColumnName="id")
+     * @var Mem
      */
     private $mem;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Mem", inversedBy="ratings")
-     * @ORM\JoinColumn(name="mem_id", referencedColumnName="id")
-     * @var Mem
+     * @var integer
+     *
+     * @ORM\Column(name="rating", type="smallint")
      */
     private $rating;
 
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     
     /**

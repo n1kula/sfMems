@@ -31,19 +31,41 @@
         
         <p>Nie znaleziono komentarzy.</p>
         
-        {# if app.user #}
+    {% endfor %}
+    
+    {# if app.user #}
+    {% if is_granted('ROLE_USER') %}
+    
+        {% if mem.comments|length > 0 %}
+            <h3>Dodaj komentarz!</h3>
+        {% else %}
+            <h3>Dodaj jako pierwszy!</h3>
+        {% endif %}
+        
+        {{ form(form1) }}
+    
+    {% else %}
+        
+        <p><a href="{{ path('fos_user_security_login') }}" >Zaloguj się</a>, by móc dodawać komentarze.</p>
+        
+    {% endif %}
+    
+    
+    <h3>Średnia ocena </h3>
+    <p> tu bedzie srednia</p>
+    {# if app.user #}
         {% if is_granted('ROLE_USER') %}
         
-            <h3>Dodaj jako pierwszy!</h3>
-            {{ form(form) }}
+            <h3>Oceń mema.</h3>
+            {{ form(form2) }}
             
             {% else %}
                 
-                <p><a href="{{ path('fos_user_security_login') }}"> Zaloguj się </a>, w celu dodania komentarza.</p>
+                <p><a href="{{ path('fos_user_security_login') }}"> Zaloguj się </a>, aby ocenić mema.</p>
             
         {% endif %}
-    
-    {% endfor %}
+        
+  <div class="clearfix"></div>
     
 </div>
         

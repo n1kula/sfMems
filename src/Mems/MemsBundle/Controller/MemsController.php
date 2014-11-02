@@ -5,6 +5,9 @@ namespace Mems\MemsBundle\Controller;
 use Mems\MemsBundle\Form\CommentType;
 use Mems\MemsBundle\Form\AddCommentType;
 use Mems\MemsBundle\Entity\Comment;
+use Mems\MemsBundle\Entity\Rating;
+use Mems\MemsBundle\Form\RatingType;
+use Mems\MemsBundle\Form\AddRatingType;
 use Mems\MemsBundle\Form\AddMemType;
 use Mems\MemsBundle\Entity\Mem;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,12 +44,13 @@ class MemsController extends Controller
             ->findOneBy([
                 'slug' => $slug,
             ]);
-         
+       
+                 
         if (!$mem) {
             throw $this->createNotFoundException('Mem nie istnieje');
         }
         $comment = new Comment();
-        $form = $this->createForm(new AddCommentType(), $comment);
+        $form1 = $this->createForm(new AddCommentType(), $comment);
          if ($user && $user->hasRole('ROLE_USER')) {
             
             $comment->setHost();
@@ -56,9 +60,9 @@ class MemsController extends Controller
             $comment->setCreatedBy($user);
 
             
-            $form->handleRequest($request);
+            $form1->handleRequest($request);
             
-            if ($form->isValid()) {
+            if ($form1->isValid()) {
              
                 // save data
                 $this->persist($comment);
@@ -70,11 +74,36 @@ class MemsController extends Controller
                 ));
             }
         }
-         
+        $rating = new Rating();
+        $form2 = $this->createForm(new AddRatingType(), $rating);
+        $rating->setMem($mem);
+        $rating->setCreatedBy($user);
+        $form2->handleRequest($request);
+        
+        if ($form2->isValid()) {
+             
+                // save data
+                $this->persist($rating);
+            
+                $this->addFlash('notice', "Ocena została pomyślnie zapisana.");
+            
+                return $this->redirect($this->generateUrl('mems_show', array(
+                    'slug' => $mem->getSlug())
+                ));
+            }
+        
+        
         return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
             'mem' => $mem,
-            'form' => $form->createView()
+            'form1' => $form1->createView(),
+            'rating' => $rating,
+            'form2' => $form2->createView()
         ));    
+        
+        
+        
+         
+          
     }
     public function addAction(Request $request)
     {
