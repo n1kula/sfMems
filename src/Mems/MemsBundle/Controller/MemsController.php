@@ -49,7 +49,9 @@ class MemsController extends Controller
         $form = $this->createForm(new AddCommentType(), $comment);
          if ($user && $user->hasRole('ROLE_USER')) {
             
-            
+            $comment->setHost();
+            $comment->setIp();
+            $comment->setUserAgent();
             $comment->setMem($mem);
             $comment->setCreatedBy($user);
 
