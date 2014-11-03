@@ -114,7 +114,7 @@ class MemsController extends Controller
                     'slug' => $mem->getSlug())
                 ));
             }
-        
+      
         
         return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
             'mem' => $mem,
@@ -123,11 +123,10 @@ class MemsController extends Controller
             'form2' => $form2->createView()
         ));    
         
+    }   
         
-        
-         
-          
-    }
+    
+    
     public function addAction(Request $request)
     {
         $user = $this->getUser();
@@ -159,4 +158,21 @@ class MemsController extends Controller
         ));
     }
 
+    public function getAverage($mem)
+    {
+        $i=0;
+        $sum=0;
+        $mems = $this->getDoctrine()
+                ->getRepository('MemsMemsBundle:Mem')
+                 ->findAll();
+        
+        foreach ($mems as $mem)
+        {
+           
+            $sum=$sum+$mems['rating'];
+            $i=$i+1;
+        }
+        $average=$sum/2;
+        return $this->average;
+    }
 }

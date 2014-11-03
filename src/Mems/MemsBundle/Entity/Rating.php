@@ -156,4 +156,5 @@ class Rating
     {
         return $this->createdBy;
     }
+    
 }
