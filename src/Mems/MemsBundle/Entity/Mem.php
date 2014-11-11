@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Mems
  *
  * @ORM\Table(name="mem")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Mems\MemsBundle\Entity\MemRandomRepository")
  * @Vich\Uploadable
  */
 class Mem
@@ -83,7 +83,8 @@ class Mem
      * @ORM\Column(name="is_accepted", type="boolean")
      */
     private $isAccepted = false;
-    
+ 
+       
     /**
      * Constructor
      */
@@ -315,4 +316,5 @@ class Mem
     {
         return $this->imageFile;
     }
+
 }

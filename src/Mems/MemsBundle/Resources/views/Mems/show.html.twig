@@ -24,7 +24,7 @@
     
         <p id="comment-{{ comment.id }}">
             {{ comment.comment }}
-            <small>Dodany przez {{ comment.createdBy }} dnia {{ comment.createdAt|date('Y-m-d H:i:s') }}</small>
+            <small>Dodany przez {{ comment.createdBy }} dnia {{ comment.createdAt|date('Y-m-d H:i:s') }} </small>
         </p>
     
     {% else %}
@@ -56,7 +56,7 @@
     {% for rating in mem.ratings %}
 
         <p id="rating-{{ rating.id }}">{{ rating.rating }}
-            <small>Dodana przez {{ rating.createdBy }} dnia {{ rating.createdAt|date('Y-m-d H:i:s') }}</small>
+            <small>Dodana przez {{ rating.createdBy }} dnia {{ rating.createdAt|date('Y-m-d H:i:s') }} {{ averageRating }}</small>
         </p>
         
     
@@ -70,7 +70,7 @@
         {% if is_granted('ROLE_USER') %}
         
             <h3>Oceń mema.</h3>
-            {{ average }}
+        
             {{ form(form2) }}
             
             {% else %}

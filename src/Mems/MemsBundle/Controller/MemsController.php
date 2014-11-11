@@ -114,18 +114,80 @@ class MemsController extends Controller
                     'slug' => $mem->getSlug())
                 ));
             }
-      
+        $averageRating=$this->getAverageRating($mem);
         
         return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
             'mem' => $mem,
             'form1' => $form1->createView(),
-            'rating' => $rating,
+            'averageRating' => $averageRating,
             'form2' => $form2->createView()
         ));    
         
     }   
         
-    
+    public function showRandomAction()
+    {
+        $request = $this->getRequest();
+        $user = $this->getUser();
+        $mem = $this->getDoctrine()
+            ->getRepository('MemsMemsBundle:Mem')
+            ->getRandom();
+        
+        
+        $comment = new Comment();
+        $form1 = $this->createForm(new AddCommentType(), $comment);
+         if ($user && $user->hasRole('ROLE_USER')) {
+            
+            $comment->setHost();
+            $comment->setIp();
+            $comment->setUserAgent();
+            $comment->setMem($mem);
+            $comment->setCreatedBy($user);
+
+            
+            $form1->handleRequest($request);
+            
+            if ($form1->isValid()) {
+             
+                // save data
+                $this->persist($comment);
+            
+                $this->addFlash('notice', "Komentarz został pomyślnie zapisany.");
+            
+                return $this->redirect($this->generateUrl('mems_show', array(
+                    'slug' => $mem->getSlug())
+                ));
+            }
+        }
+        $rating = new Rating();
+        $form2 = $this->createForm(new AddRatingType(), $rating);
+        $rating->setMem($mem);
+        $rating->setCreatedBy($user);
+        $form2->handleRequest($request);
+        
+       
+        
+        
+        if ($form2->isValid()) {
+             
+                // save data
+                $this->persist($rating);
+            
+                $this->addFlash('notice', "Ocena została pomyślnie zapisana.");
+            
+                return $this->redirect($this->generateUrl('mems_show', array(
+                    'slug' => $mem->getSlug())
+                ));
+            }
+        $averageRating=$this->getAverageRating($mem);
+        
+        return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
+            'mem' => $mem,
+            'form1' => $form1->createView(),
+            'averageRating' => $averageRating,
+            'form2' => $form2->createView()
+        ));
+    }
     
     public function addAction(Request $request)
     {
@@ -157,22 +219,16 @@ class MemsController extends Controller
             'form'  => $form->createView()
         ));
     }
-
-    public function getAverage($mem)
+    
+    public function getAverageRating($mem)
     {
-        $i=0;
-        $sum=0;
-        $mems = $this->getDoctrine()
-                ->getRepository('MemsMemsBundle:Mem')
-                 ->findAll();
-        
-        foreach ($mems as $mem)
-        {
-           
-            $sum=$sum+$mems['rating'];
-            $i=$i+1;
-        }
-        $average=$sum/2;
-        return $this->average;
+        $rate=0;
+        $ratings = $this->getDoctrine()
+            ->getRepository('MemsMemsBundle:Rating')
+            ->findAll();
+      
+            
+          
     }
+
 }

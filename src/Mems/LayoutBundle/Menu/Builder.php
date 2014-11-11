@@ -22,7 +22,7 @@ class Builder extends ContainerAware
             'uri' => '#'
         ]);
         $menu->addChild('Losuj', [
-            'route' => 'mems_list'
+            'route' => 'mems_show_rand'
         ]);
         
         return $menu;
@@ -39,7 +39,7 @@ class Builder extends ContainerAware
             ->setLinkAttribute('data-toggle', 'dropdown')
             ->setChildrenAttribute('class', 'dropdown-menu');
         $menu['User']->addChild('Profil', array('route' => 'fos_user_profile_edit'));
-        $menu['User']->addChild('Dodaj mema', array('route' => 'mems_new'));
+        $menu['User']->addChild('Dodaj mema', array('route' => 'mems_add'));
         
         $menu['User']->addChild('Wyloguj', array('route' => 'fos_user_security_logout'));
     
