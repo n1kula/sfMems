@@ -18,5 +18,18 @@ class MemRandomRepository extends EntityRepository
             ->setMaxResults(1)
             ->getQuery()
             ->getSingleResult();
+    } 
+ 
+     public function getMemAvgRating($mem)
+    {
+        $query = $this->getEntityManager()->createQueryBuilder();
+        $query->select('count(r.id) as totalRatingCount,
+            avg(r.rating) as avgRating')
+            ->from('MemsMemsBundle:Rating', 'r')
+            ->where('r.mem = :mem')
+            ->setParameter('mem', $mem);
+        return $query->getQuery()->getSingleResult();
     }
+    
+   
 }

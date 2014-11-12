@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Rating
  *
  * @ORM\Table(name="rating")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Mems\MemsBundle\Entity\RatingRepository")
  */
 class Rating
 {
@@ -47,13 +47,14 @@ class Rating
      * @ORM\Column(name="rating", type="smallint")
      */
     private $rating;
-
+    
+    
     public function __construct()
     {
         $this->createdAt = new \DateTime();
     }
 
-    
+
     /**
      * Get id
      *
@@ -156,5 +157,6 @@ class Rating
     {
         return $this->createdBy;
     }
+    
 
 }

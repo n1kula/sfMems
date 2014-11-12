@@ -8,7 +8,7 @@ class RatingRepository extends EntityRepository
         $query = $this->getEntityManager()->createQueryBuilder();
         $query->select('count(r.id) as totalRatingCount,
             avg(r.rating) as avgRating')
-            ->from('KwejkMemsBundle:Rating', 'r')
+            ->from('MemsMemsBundle:Rating', 'r')
             ->where('r.mem = :mem')
             ->setParameter('mem', $mem);
         return $query->getQuery()->getSingleResult();
