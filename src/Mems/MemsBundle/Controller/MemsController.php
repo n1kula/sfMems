@@ -114,9 +114,10 @@ class MemsController extends Controller
                     'slug' => $mem->getSlug())
                 ));
             }
-        $averageRating = $this->getDoctrine()
-            ->getRepository('MemsMemsBundle:Rating')
+         $avgRating = $this->getDoctrine()
+            ->getRepository('MemsMemsBundle:Mem')
             ->getMemAvgRating($mem);
+        $averageRating=$avgRating['avgRating'];
         
         return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
             'mem' => $mem,
@@ -181,9 +182,10 @@ class MemsController extends Controller
                     'slug' => $mem->getSlug())
                 ));
             }
-        $averageRating = $this->getDoctrine()
+        $avgRating = $this->getDoctrine()
             ->getRepository('MemsMemsBundle:Mem')
             ->getMemAvgRating($mem);
+        $averageRating=$avgRating['avgRating'];
         
         return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
             'mem' => $mem,
