@@ -135,9 +135,24 @@ class MemsController extends Controller
         $mem = $this->getDoctrine()
             ->getRepository('MemsMemsBundle:Mem')
             ->getRandom();
-        
-        if (!mem){ 
-            echo "Brak memów";
+     
+        if (!$mem){ 
+            $mems = $this->getDoctrine()
+                ->getRepository('MemsMemsBundle:Mem')
+                 ->findBy(
+                ['isAccepted' => true],
+                ['createdAt' => 'desc']
+            );
+            $page = 1;
+         $paginator  = $this->get('knp_paginator');
+         $pages = $paginator->paginate(
+                $mems,
+                $page,
+                5
+        );
+        return $this->render('MemsMemsBundle:Mems:list.html.twig', array(
+            'pages' =>$pages,
+        ));
         } else {
         $comment = new Comment();
         $form1 = $this->createForm(new AddCommentType(), $comment);

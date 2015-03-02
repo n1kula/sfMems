@@ -12,13 +12,16 @@ class MemRandomRepository extends EntityRepository
             ->getQuery()
             ->getSingleScalarResult();
         //zwracamy losowego mema
+        if (!$count) {
+           
+        } else {
         return $this->createQueryBuilder('u')
             ->where('u.isAccepted = true')
             ->setFirstResult(rand(0, $count - 1))
             ->setMaxResults(1)
             ->getQuery()
             ->getSingleResult();
-    } 
+    } }
  
      public function getMemAvgRating($mem)
     {
