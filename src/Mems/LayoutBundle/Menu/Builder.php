@@ -33,15 +33,15 @@ class Builder extends ContainerAware
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
     
-        $menu->addChild('User', ['uri' => '#'])
+        $menu->addChild('Konto', ['uri' => '#'])
             ->setAttribute('class', 'dropdown')
             ->setLinkAttribute('class', 'dropdown-toggle')
             ->setLinkAttribute('data-toggle', 'dropdown')
             ->setChildrenAttribute('class', 'dropdown-menu');
-        $menu['User']->addChild('Profil', array('route' => 'fos_user_profile_edit'));
-        $menu['User']->addChild('Dodaj mema', array('route' => 'mems_add'));
+        $menu['Konto']->addChild('Profil', array('route' => 'fos_user_profile_edit'));
+        $menu['Konto']->addChild('Dodaj mema', array('route' => 'mems_add'));
         
-        $menu['User']->addChild('Wyloguj', array('route' => 'fos_user_security_logout'));
+        $menu['Konto']->addChild('Wyloguj', array('route' => 'fos_user_security_logout'));
     
         return $menu;
     }
@@ -53,6 +53,9 @@ class Builder extends ContainerAware
     
         $menu->addChild('Zaloguj', [
             'route' => 'fos_user_security_login'
+        ]);
+        $menu->addChild('Zarejestruj', [
+            'route' => 'fos_user_registration_register'
         ]);
     
         return $menu;

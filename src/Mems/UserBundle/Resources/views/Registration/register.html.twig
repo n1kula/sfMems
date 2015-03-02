@@ -1,15 +1,12 @@
-{% extends "MemsLayoutBundle::layout_auth.html.twig" %}
-
+{% extends "MemsLayoutBundle::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
-
 <div class="container">
-    <h2 class="form-signin-heading">Zarejestruj się</h2>
+    
  {% block fos_user_content %}
 <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-signin">
+    <h2 class="form-signin-heading">Zarejestruj się</h2>
     {{ form_widget(form) }}
     <div>
         <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-lg btn-primary btn-block" />

@@ -1,4 +1,4 @@
-{% extends "MemsLayoutBundle::layout_auth.html.twig" %}
+{% extends "MemsLayoutBundle::layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
@@ -16,7 +16,7 @@
   
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     
-    <input class="form-control" placeholder="Nazwa użytkownike" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+    <input class="form-control" placeholder="Nazwa użytkownika" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
     <input class="form-control" placeholder="Hasło" type="password" id="password" name="_password" required="required"  />
 
     <label class="checkbox">
