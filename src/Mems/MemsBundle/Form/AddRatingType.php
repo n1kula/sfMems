@@ -14,10 +14,15 @@ class AddRatingType extends AbstractType
         
         $builder
             ->add('rating', 'choice', array(
-    'choices' => array('1' => '1', '2' => '2')
+                'label' => 'Twoja ocena:',
+    'choices' => array('1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5',)
+                
 ))
             
-            ->add('save', 'submit')
+            ->add('save', 'submit', array(
+                'label'     => 'Dodaj ocenę',
+                'attr'      => array(
+                'class'     => 'btn btn-info',)))
         ;
     }
     

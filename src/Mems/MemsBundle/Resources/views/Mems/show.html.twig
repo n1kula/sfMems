@@ -64,8 +64,6 @@
     {# if app.user #}
         {% if is_granted('ROLE_USER') %}
         
-            <h3>Oceń mema.</h3>
-        
             {{ form(form2) }}
             
             {% else %}

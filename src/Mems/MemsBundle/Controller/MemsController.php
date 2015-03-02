@@ -175,7 +175,7 @@ class MemsController extends Controller
                 $this->addFlash('notice', "Komentarz został pomyślnie zapisany.");
             
                 return $this->redirect($this->generateUrl('mems_show', array(
-                    'slug' => $mem->getSlug())
+                  'slug' => $mem->getSlug())
                 ));
             }
         }
@@ -204,11 +204,11 @@ class MemsController extends Controller
             ->getMemAvgRating($mem);
         $averageRating=$avgRating['avgRating'];
         
-        return $this->render('MemsMemsBundle:Mems:show.html.twig', array(
+        return $this->render('MemsMemsBundle:Mems:showRand.html.twig', array(
             'mem' => $mem,
-            'form1' => $form1->createView(),
-            'averageRating' => $averageRating,
-            'form2' => $form2->createView()
+           // 'form1' => $form1->createView(),
+            'averageRating' => $averageRating
+           // 'form2' => $form2->createView()
         ));
     }
     }

@@ -16,7 +16,11 @@ class AddCommentType extends AbstractType
                 'label'     => false,
                 'attr'      => array('placeholder' => "Treść komentarza")
             ))
-            ->add('save', 'submit')
+            ->add('save', 'submit', array(
+                'label'     => 'Dodaj komentarz',
+                'attr'      => array(
+                'class'     => 'btn btn-info',)))
+        ;
         ;
     }
     
