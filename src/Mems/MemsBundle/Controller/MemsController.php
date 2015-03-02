@@ -136,7 +136,9 @@ class MemsController extends Controller
             ->getRepository('MemsMemsBundle:Mem')
             ->getRandom();
         
-        
+        if (!mem){ 
+            echo "Brak memów";
+        } else {
         $comment = new Comment();
         $form1 = $this->createForm(new AddCommentType(), $comment);
          if ($user && $user->hasRole('ROLE_USER')) {
@@ -193,6 +195,7 @@ class MemsController extends Controller
             'averageRating' => $averageRating,
             'form2' => $form2->createView()
         ));
+    }
     }
     
     public function addAction(Request $request)
