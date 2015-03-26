@@ -47,7 +47,7 @@ class FOSUBUserProvider extends BaseClass
         $user = $this->userManager->findUserByEmail($useremail);
         //$user = $this->userManager->findUserBy(array($this->getProperty($response) => $useremail));
         //when the user is registrating
-        if (!$user) {
+        if (null === $user) {
             $service = $response->getResourceOwner()->getName();
             $setter = 'set'.ucfirst($service);
             $setter_id = $setter.'Id';

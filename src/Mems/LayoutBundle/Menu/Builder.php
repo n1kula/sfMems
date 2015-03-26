@@ -50,10 +50,19 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
-    
-        $menu->addChild('Zaloguj', [
+        
+        $menu->addChild('Zaloguj', ['uri' => '#'])
+            ->setAttribute('class', 'dropdown')
+            ->setLinkAttribute('class', 'dropdown-toggle')
+            ->setLinkAttribute('data-toggle', 'dropdown')
+            ->setChildrenAttribute('class', 'dropdown-menu');
+        $menu['Zaloguj']->addChild('Zaloguj', [
             'route' => 'fos_user_security_login'
         ]);
+        $menu['Zaloguj']->addChild('Zaloguj poprzez facebook', [
+            'route' => 'facebook_login'
+        ]);
+        
         $menu->addChild('Zarejestruj', [
             'route' => 'fos_user_registration_register'
         ]);
