@@ -28,8 +28,14 @@ mems_show_rand:
     path:     /losuj
     defaults: { _controller: MemsMemsBundle:Mems:showRandom }      
 
+mems_top:
+    path:     /top
+    defaults: { _controller: MemsMemsBundle:Mems:top }
+
 mems_show:
     path:     /{slug}
     defaults: { _controller: MemsMemsBundle:Mems:show }
+    
+
     
   

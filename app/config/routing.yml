@@ -31,3 +31,18 @@ mems_admin:
 mems_mems:
     resource: "@MemsMemsBundle/Resources/config/routing.yml"
     prefix:   /
+
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /login
+ 
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /login
+ 
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /login
+ 
+facebook_login:
+    pattern: /login/check-facebook

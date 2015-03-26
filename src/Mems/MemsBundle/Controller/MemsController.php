@@ -243,6 +243,23 @@ class MemsController extends Controller
             'form'  => $form->createView()
         ));
     }
-    
-  
+     public function topAction()
+    {
+        $mems = $this->getDoctrine()
+                ->getRepository('MemsMemsBundle:Mem')
+                 ->findBy(
+                ['isAccepted' => true],
+                ['createdAt' => 'desc']
+            );
+        $avgRating = $this->getDoctrine()
+            ->getRepository('MemsMemsBundle:Mem')
+            ->getMemAvgRating($mem);
+        $averageRating=$avgRating['avgRating'];
+        return $this->render('MemsMemsBundle:Mems:topMems.html.twig', array(
+            'topmems' =>$topmems,
+            
+            
+        ));
+        
+    }
 }

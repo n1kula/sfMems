@@ -16,7 +16,15 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-            logout:       true
+            oauth:
+                resource_owners:
+                    facebook:           "/login/check-facebook"
+                login_path:        /login
+                failure_path:      /login
+ 
+                oauth_user_provider:
+                    service: my_user_provider
+            logout: true
             anonymous:    true
 
     access_control:

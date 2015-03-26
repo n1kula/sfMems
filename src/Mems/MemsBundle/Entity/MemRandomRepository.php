@@ -32,7 +32,5 @@ class MemRandomRepository extends EntityRepository
             ->where('r.mem = :mem')
             ->setParameter('mem', $mem);
         return $query->getQuery()->getSingleResult();
-    }
-    
-   
+    }   
 }

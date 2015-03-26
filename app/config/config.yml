@@ -112,3 +112,19 @@ knp_paginator:
         page_name: page
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
+
+hwi_oauth:
+    connect:
+        account_connector: my_user_provider
+    firewall_name: main
+    
+    fosub:
+        username_iterations: 30
+        properties:
+            facebook: facebook_id
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           "%facebook_app_id%"
+            client_secret:       "%facebook_app_secret%"
+            scope:               "email"

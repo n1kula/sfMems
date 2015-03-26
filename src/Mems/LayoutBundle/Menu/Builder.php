@@ -19,7 +19,7 @@ class Builder extends ContainerAware
             'route' => 'mems_unaccepted_list'
         ]);
         $menu->addChild('Top', [
-            'uri' => '#'
+            'route' => 'mems_top'
         ]);
         $menu->addChild('Losuj', [
             'route' => 'mems_show_rand'

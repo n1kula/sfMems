@@ -39,6 +39,10 @@
             
             <div class="footer">
                 <div class="container">
+                    <a class="btn btn-social btn-facebook"
+               href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}" alt="Sign in with Facebook">
+                <i class="fa fa-facebook"></i> Sign in with Facebook
+            </a>
                     {{ knp_menu_render('MemsLayoutBundle:Builder:mainMenu') }}
                 </div>
               
