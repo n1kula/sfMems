@@ -1,5 +1,12 @@
 {% extends "MemsLayoutBundle::layout.html.twig" %}
 
 {% block body %}
-{% include "MemsUserBundle:Profile:edit_content.html.twig" %}
+<div class="row">
+    <div class="col-lg-8">
+        {% include "MemsUserBundle:Profile:edit_content.html.twig" %}
+    </div>
+        <div class="col-lg-4">
+            {% include "MemsLayoutBundle:Default:side.html.twig" %}
+        </div>
+</div>
 {% endblock body %}

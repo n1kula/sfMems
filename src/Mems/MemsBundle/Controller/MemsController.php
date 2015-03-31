@@ -206,9 +206,9 @@ class MemsController extends Controller
         
         return $this->render('MemsMemsBundle:Mems:showRand.html.twig', array(
             'mem' => $mem,
-           // 'form1' => $form1->createView(),
-            'averageRating' => $averageRating
-           // 'form2' => $form2->createView()
+            'form1' => $form1->createView(),
+            'averageRating' => $averageRating,
+            'form2' => $form2->createView()
         ));
     }
     }
@@ -251,12 +251,15 @@ class MemsController extends Controller
                 ['isAccepted' => true],
                 ['createdAt' => 'desc']
             );
+        foreach ($mems as $mem){
         $avgRating = $this->getDoctrine()
             ->getRepository('MemsMemsBundle:Mem')
             ->getMemAvgRating($mem);
-        $averageRating=$avgRating['avgRating'];
+        $mem->averageRating=$avgRating['avgRating'];
+        
+        }
         return $this->render('MemsMemsBundle:Mems:topMems.html.twig', array(
-            'topmems' =>$topmems,
+            'topmems' =>$mems,
             
             
         ));

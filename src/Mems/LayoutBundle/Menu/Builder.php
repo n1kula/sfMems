@@ -28,19 +28,21 @@ class Builder extends ContainerAware
         return $menu;
     }
     
+    
     public function userMenuAuthenticated(FactoryInterface $factory, array $options)
     {
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
-    
+        $menu->addChild('Dodaj Mema', [
+            'route' => 'mems_add'
+            ])
+                ->setAttribute('class', 'active');
         $menu->addChild('Konto', ['uri' => '#'])
             ->setAttribute('class', 'dropdown')
             ->setLinkAttribute('class', 'dropdown-toggle')
             ->setLinkAttribute('data-toggle', 'dropdown')
             ->setChildrenAttribute('class', 'dropdown-menu');
         $menu['Konto']->addChild('Profil', array('route' => 'fos_user_profile_edit'));
-        $menu['Konto']->addChild('Dodaj mema', array('route' => 'mems_add'));
-        
         $menu['Konto']->addChild('Wyloguj', array('route' => 'fos_user_security_logout'));
     
         return $menu;

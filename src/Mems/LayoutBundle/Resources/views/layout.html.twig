@@ -14,10 +14,8 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <div class="container">
-            
-            <nav role="navigation" class="navbar navbar-default">
-                <div class="container-fluid">
+            <nav role="navigation" class="navbar navbar-fixed-top navbar-inverse">
+                <div class="container">
                     <div class="navbar-collapse collapse" id="navbar">
                         {{ knp_menu_render('MemsLayoutBundle:Builder:mainMenu') }}
                         {% if app.user %}
@@ -28,7 +26,7 @@
                     </div>
                 </div>
             </nav>
-                    
+            <div class="container">       
             {% for flashMessage in app.session.flashbag.get('notice') %}
                 <div class="alert alert-success" role="alert">
                     {{ flashMessage }}
@@ -36,7 +34,7 @@
             {% endfor %}
         
             {% block body %}{% endblock %}
-            
+            <hr>
             <div class="footer">
                 <div class="container">
                     {{ knp_menu_render('MemsLayoutBundle:Builder:mainMenu') }}

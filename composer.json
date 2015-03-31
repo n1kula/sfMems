@@ -28,7 +28,8 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "liip/imagine-bundle": "dev-master",
         "cedriclombardot/admingenerator-generator-bundle": "dev-master",
-        "hwi/oauth-bundle": "0.4.*@dev"
+        "hwi/oauth-bundle": "0.4.*@dev",
+        "facebook/php-sdk-v4" : "4.0.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.4.0"

@@ -22,3 +22,7 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    facebook_app_id: ~
+    facebook_app_secret: ~
+    
